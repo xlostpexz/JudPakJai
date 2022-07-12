@@ -2,6 +2,7 @@
     local CenterHubNo1 = library:CreateWindow("Winnable Hub | จุดพักใจ -- Right Control",Enum.KeyCode.RightControl)
     local Tab = CenterHubNo1:CreateTab("Main")
     local Sector1 = Tab:CreateSector("Main","left")
+    local Sector2 = Tab:CreateSector("Boombox","Right")
     Sector1:AddLabel("Credit : Winnable Hub")
         Sector1:AddButton("Copy Discord",function(t)
       setclipboard("https://discord.gg/t97DRzvVgN")
@@ -16,6 +17,21 @@ Sector1:AddLabel(">>> Need Boombox <<<")
     Sector1:AddToggle("White Screen",false,function(t)
         _G.WSCR = t
     end)
+    
+    Sector2:AddTextbox("Music ID","",function(t)
+        ID = t
+    end)
+    
+        Sector2:AddButton("OPEN MUSIC",function(t)
+      local args = {
+    [1] = ID,
+    [2] = false,
+    [3] = 25,
+    [4] = 0.2
+}
+
+workspace.DRadio_Script.Event:FireServer(unpack(args))
+        end)
         
         spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
